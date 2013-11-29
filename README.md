@@ -1,4 +1,4 @@
-realtime
+Recycool
 ========
 
-Node.js, Express and Socket.io simple app to manage realtime events
+Smart objects can help men respecting the nature
