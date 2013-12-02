@@ -2,30 +2,29 @@
 // Documentation can be found at: http://foundation.zurb.com/docs
 $(document).foundation();
 
+var RECYCOOL = window.RECYCOOL || {};
+
 var socket = io.connect("http://127.0.0.1");
-socket.on('recycool:statusChange', function (data) {
-	// data.open || data.close
-	if(data.open) {
-		// do something
-	}
-	if(data.close) {
-		// do something
-	}
+socket.on('recycool:status', function (data) {
+	console.log(data.status);
+	alert("status");
 });
 
 socket.on('recycool:weight', function(data) {
 	console.log(data.weight);
-})
+	alert("status");
+});
 
 socket.on('recycool:volume', function(data) {
-	console.log(data.volume);
+	volume = data.volume;
+	RECYCOOL.animateDial('.dial',volume);
+
 	//volume from 0% to 100%
-})
+});
 
 jQuery(function($){
 
 	// Variables
-	var RECYCOOL = window.RECYCOOL || {};
 	var windowHeight = $(window).height(),
 		windowWidth = $(window).width();
 
@@ -50,6 +49,6 @@ jQuery(function($){
 		});
 	}
 
-	RECYCOOL.animateDial('.dial',77);
+	RECYCOOL.animateDial('.dial',volume);
 
 });
