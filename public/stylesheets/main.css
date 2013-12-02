@@ -1,10 +1,15 @@
-/* line 2, ../scss/main.scss */
+/* line 1, ../scss/main.scss */
+html, body {
+  margin: 0;
+}
+
+/* line 6, ../scss/main.scss */
 #wrapper #recycool {
   height: 600px;
   text-align: center;
   position: relative;
 }
-/* line 6, ../scss/main.scss */
+/* line 10, ../scss/main.scss */
 #wrapper #recycool div {
   display: block;
   position: absolute;
@@ -14,7 +19,13 @@
   bottom: 0;
   margin: auto;
 }
-/* line 15, ../scss/main.scss */
+/* line 19, ../scss/main.scss */
 #wrapper #recycool input {
   display: none;
+}
+
+/* line 25, ../scss/main.scss */
+#footer {
+  text-align: center;
+  font-size: 10px;
 }

@@ -1,3 +1,7 @@
+html,body {
+	margin:0;
+}
+
 #wrapper{
 	#recycool{
 		height: 600px;
@@ -16,4 +20,9 @@
 			display: none;
 		}	
 	}
+}
+
+#footer {
+	text-align: center;
+	font-size: 10px;
 }
