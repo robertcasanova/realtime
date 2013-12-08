@@ -1,8 +1,37 @@
+$irish_green: #60bf7a;
+
+
 html,body {
 	margin:0;
+	background-color: $irish_green;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 200;
+	color: #fff;
+	height: 100%;
+	width: 100%;
 }
 
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 200;
+	color: #fff;
+	-webkit-font-smoothing:antialiased;
+}
+
+h1 {
+	font-size: 35px;
+	line-height: 35px;
+	margin: 20px 0;
+}
+
+
+
+
 #wrapper{
+	text-align: center;
+	position: relative;
+	height: 100%;
+
 	#recycool{
 		height: 600px;
 		text-align: center;
@@ -19,6 +48,50 @@ html,body {
 		input{
 			display: none;
 		}	
+	}
+	#power {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left:0;
+		width: 100%;
+		margin: 0 auto;
+		margin-top: -73px;
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+		h1 strong {
+			display:block;
+			font-weight: 300;
+		}
+		span {
+			display:block;
+			width: 100%;
+			position: absolute;
+			top:100px;
+			left:0;
+		}
+		> div {
+			display:none;
+			&.active {
+				display: block;
+			}
+		}
+		div + div {
+			img {
+				margin-top: -20px;
+			}
+		}
+		&:hover {
+			> div {
+				display:block;
+				&.active {
+					display: none;
+				}
+			}	
+		}
+
 	}
 }
 

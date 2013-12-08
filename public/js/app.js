@@ -47,8 +47,15 @@ jQuery(function($){
 				$(knob).val(valore+'%');
 			}
 		});
-	}
+	};
+
+	
+	
 
 	RECYCOOL.animateDial('.dial',volume);
+
+
+
+	
 
 });

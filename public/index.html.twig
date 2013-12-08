@@ -4,26 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recycool</title>
+    <link href='http://fonts.googleapis.com/css?family=Raleway+Dots|Raleway:400,200' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="stylesheets/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
     
     <div id="wrapper">
-      <div class="row">
-        <div class="large-6 large-centered columns">
-          <div id="recycool">
-            <input type="text" value="0" class="dial">
+          <div id="power">
+            <div class="active">
+                <img class="pulse" src="img/power.png" alt="">
+                <h1>
+                  <span class="animated slideInLeft">Turn power on</span>
+                </h1>
+            </div>
+            <div>
+                <img src="img/logo.png" alt="">
+                <h1>
+                  <span class="animated slideInLeft">Recycool is <strong>Active</strong></span>
+                </h1>
+            </div>
+            
           </div>
+
+
+          <!-- <div id="recycool">
+            <input type="text" value="0" class="dial">
+          </div> -->
         </div>
-      </div>
     </div>
 
-    <footer id="footer">
+    <!-- <footer id="footer">
         <div class="panel callout">
           <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Recycool</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Robert Casanova, Fabrizio Calderan, Enrico Antonello, Nicholas Ruggeri</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/robertcasanova/recycool" rel="dct:source">https://github.com/robertcasanova/recycool</a>.
         </div>
-    </footer>
+    </footer> -->
     
     <script>
       var status = "{{ status }}",

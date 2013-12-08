@@ -7704,18 +7704,458 @@ th.hide-for-touch {
   display: table-cell !important;
 }
 
-/* line 1, ../scss/main.scss */
-html, body {
-  margin: 0;
+/* line 1, ../scss/_animation.scss */
+.animated {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
 }
 
-/* line 6, ../scss/main.scss */
+/* line 1, ../scss/_animation.scss */
+.animated.hinge {
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes slideInDown {
+  /* line 2, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-2000px);
+  }
+
+  /* line 5, ../scss/_animation.scss */
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes slideInDown {
+  /* line 11, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-2000px);
+  }
+
+  /* line 16, ../scss/_animation.scss */
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+
+@-o-keyframes slideInDown {
+  /* line 22, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -o-transform: translateY(-2000px);
+  }
+
+  /* line 27, ../scss/_animation.scss */
+  100% {
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  /* line 33, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+
+  /* line 38, ../scss/_animation.scss */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* line 43, ../scss/_animation.scss */
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  -moz-animation-name: slideInDown;
+  -o-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+
+@-webkit-keyframes slideInLeft {
+  /* line 50, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+  }
+
+  /* line 55, ../scss/_animation.scss */
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-moz-keyframes slideInLeft {
+  /* line 61, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-2000px);
+  }
+
+  /* line 66, ../scss/_animation.scss */
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+
+@-o-keyframes slideInLeft {
+  /* line 72, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -o-transform: translateX(-2000px);
+  }
+
+  /* line 77, ../scss/_animation.scss */
+  100% {
+    -o-transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  /* line 83, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+
+  /* line 88, ../scss/_animation.scss */
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* line 93, ../scss/_animation.scss */
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  -moz-animation-name: slideInLeft;
+  -o-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+}
+
+@-webkit-keyframes slideInRight {
+  /* line 100, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+  }
+
+  /* line 105, ../scss/_animation.scss */
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-moz-keyframes slideInRight {
+  /* line 111, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(2000px);
+  }
+
+  /* line 116, ../scss/_animation.scss */
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+
+@-o-keyframes slideInRight {
+  /* line 122, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    -o-transform: translateX(2000px);
+  }
+
+  /* line 127, ../scss/_animation.scss */
+  100% {
+    -o-transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  /* line 133, ../scss/_animation.scss */
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+
+  /* line 138, ../scss/_animation.scss */
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* line 143, ../scss/_animation.scss */
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  -moz-animation-name: slideInRight;
+  -o-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
+@-webkit-keyframes slideOutUp {
+  /* line 150, ../scss/_animation.scss */
+  0% {
+    -webkit-transform: translateY(0);
+  }
+
+  /* line 154, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-2000px);
+  }
+}
+
+@-moz-keyframes slideOutUp {
+  /* line 161, ../scss/_animation.scss */
+  0% {
+    -moz-transform: translateY(0);
+  }
+
+  /* line 165, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(-2000px);
+  }
+}
+
+@-o-keyframes slideOutUp {
+  /* line 172, ../scss/_animation.scss */
+  0% {
+    -o-transform: translateY(0);
+  }
+
+  /* line 176, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -o-transform: translateY(-2000px);
+  }
+}
+
+@keyframes slideOutUp {
+  /* line 183, ../scss/_animation.scss */
+  0% {
+    transform: translateY(0);
+  }
+
+  /* line 187, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+}
+
+/* line 193, ../scss/_animation.scss */
+.slideOutUp {
+  -webkit-animation-name: slideOutUp;
+  -moz-animation-name: slideOutUp;
+  -o-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+
+@-webkit-keyframes slideOutLeft {
+  /* line 200, ../scss/_animation.scss */
+  0% {
+    -webkit-transform: translateX(0);
+  }
+
+  /* line 204, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+  }
+}
+
+@-moz-keyframes slideOutLeft {
+  /* line 211, ../scss/_animation.scss */
+  0% {
+    -moz-transform: translateX(0);
+  }
+
+  /* line 215, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -moz-transform: translateX(-2000px);
+  }
+}
+
+@-o-keyframes slideOutLeft {
+  /* line 222, ../scss/_animation.scss */
+  0% {
+    -o-transform: translateX(0);
+  }
+
+  /* line 226, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -o-transform: translateX(-2000px);
+  }
+}
+
+@keyframes slideOutLeft {
+  /* line 233, ../scss/_animation.scss */
+  0% {
+    transform: translateX(0);
+  }
+
+  /* line 237, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+}
+
+/* line 243, ../scss/_animation.scss */
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  -moz-animation-name: slideOutLeft;
+  -o-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+}
+
+@-webkit-keyframes slideOutRight {
+  /* line 250, ../scss/_animation.scss */
+  0% {
+    -webkit-transform: translateX(0);
+  }
+
+  /* line 254, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+  }
+}
+
+@-moz-keyframes slideOutRight {
+  /* line 261, ../scss/_animation.scss */
+  0% {
+    -moz-transform: translateX(0);
+  }
+
+  /* line 265, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -moz-transform: translateX(2000px);
+  }
+}
+
+@-o-keyframes slideOutRight {
+  /* line 272, ../scss/_animation.scss */
+  0% {
+    -o-transform: translateX(0);
+  }
+
+  /* line 276, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    -o-transform: translateX(2000px);
+  }
+}
+
+@keyframes slideOutRight {
+  /* line 283, ../scss/_animation.scss */
+  0% {
+    transform: translateX(0);
+  }
+
+  /* line 287, ../scss/_animation.scss */
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+}
+
+/* line 293, ../scss/_animation.scss */
+.slideOutRight {
+  -webkit-animation-name: slideOutRight;
+  -moz-animation-name: slideOutRight;
+  -o-animation-name: slideOutRight;
+  animation-name: slideOutRight;
+}
+
+@keyframes pulse {
+  /* line 304, ../scss/_animation.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 305, ../scss/_animation.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pulse {
+  /* line 310, ../scss/_animation.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 311, ../scss/_animation.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+/* line 314, ../scss/_animation.scss */
+.pulse {
+  animation: pulse 1s ease-in-out 0 infinite alternate;
+  -webkit-animation: pulse 1s ease-in-out 0 infinite alternate;
+}
+
+/* line 4, ../scss/main.scss */
+html, body {
+  margin: 0;
+  background-color: #60bf7a;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 14, ../scss/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 21, ../scss/main.scss */
+h1 {
+  font-size: 35px;
+  line-height: 35px;
+  margin: 20px 0;
+}
+
+/* line 30, ../scss/main.scss */
+#wrapper {
+  text-align: center;
+  position: relative;
+  height: 100%;
+}
+/* line 35, ../scss/main.scss */
 #wrapper #recycool {
   height: 600px;
   text-align: center;
   position: relative;
 }
-/* line 10, ../scss/main.scss */
+/* line 39, ../scss/main.scss */
 #wrapper #recycool div {
   display: block;
   position: absolute;
@@ -7725,12 +8165,60 @@ html, body {
   bottom: 0;
   margin: auto;
 }
-/* line 19, ../scss/main.scss */
+/* line 48, ../scss/main.scss */
 #wrapper #recycool input {
   display: none;
 }
+/* line 52, ../scss/main.scss */
+#wrapper #power {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -73px;
+}
+/* line 60, ../scss/main.scss */
+#wrapper #power img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 64, ../scss/main.scss */
+#wrapper #power h1 strong {
+  display: block;
+  font-weight: 300;
+}
+/* line 68, ../scss/main.scss */
+#wrapper #power span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+/* line 75, ../scss/main.scss */
+#wrapper #power > div {
+  display: none;
+}
+/* line 77, ../scss/main.scss */
+#wrapper #power > div.active {
+  display: block;
+}
+/* line 82, ../scss/main.scss */
+#wrapper #power div + div img {
+  margin-top: -20px;
+}
+/* line 87, ../scss/main.scss */
+#wrapper #power:hover > div {
+  display: block;
+}
+/* line 89, ../scss/main.scss */
+#wrapper #power:hover > div.active {
+  display: none;
+}
 
-/* line 25, ../scss/main.scss */
+/* line 98, ../scss/main.scss */
 #footer {
   text-align: center;
   font-size: 10px;

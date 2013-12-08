@@ -19,6 +19,7 @@ app.configure(function(){
     app.set('views', __dirname + '/public');
     app.set('view engine', 'twig');
     app.set('view cache', false);
+    app.disabled('view cache');
     app.set('twig options', {
         strict_variables: false,
         cache: false,

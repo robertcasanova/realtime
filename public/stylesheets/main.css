@@ -1,15 +1,42 @@
-/* line 1, ../scss/main.scss */
+/* line 4, ../scss/main.scss */
 html, body {
   margin: 0;
+  background-color: #60bf7a;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  color: #fff;
+  height: 100%;
+  width: 100%;
 }
 
-/* line 6, ../scss/main.scss */
+/* line 14, ../scss/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 21, ../scss/main.scss */
+h1 {
+  font-size: 35px;
+  line-height: 35px;
+  margin: 20px 0;
+}
+
+/* line 30, ../scss/main.scss */
+#wrapper {
+  text-align: center;
+  position: relative;
+  height: 100%;
+}
+/* line 35, ../scss/main.scss */
 #wrapper #recycool {
   height: 600px;
   text-align: center;
   position: relative;
 }
-/* line 10, ../scss/main.scss */
+/* line 39, ../scss/main.scss */
 #wrapper #recycool div {
   display: block;
   position: absolute;
@@ -19,12 +46,60 @@ html, body {
   bottom: 0;
   margin: auto;
 }
-/* line 19, ../scss/main.scss */
+/* line 48, ../scss/main.scss */
 #wrapper #recycool input {
   display: none;
 }
+/* line 52, ../scss/main.scss */
+#wrapper #power {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -73px;
+}
+/* line 60, ../scss/main.scss */
+#wrapper #power img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 64, ../scss/main.scss */
+#wrapper #power h1 strong {
+  display: block;
+  font-weight: 300;
+}
+/* line 68, ../scss/main.scss */
+#wrapper #power span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+}
+/* line 75, ../scss/main.scss */
+#wrapper #power > div {
+  display: none;
+}
+/* line 77, ../scss/main.scss */
+#wrapper #power > div.active {
+  display: block;
+}
+/* line 82, ../scss/main.scss */
+#wrapper #power div + div img {
+  margin-top: -20px;
+}
+/* line 87, ../scss/main.scss */
+#wrapper #power:hover > div {
+  display: block;
+}
+/* line 89, ../scss/main.scss */
+#wrapper #power:hover > div.active {
+  display: none;
+}
 
-/* line 25, ../scss/main.scss */
+/* line 98, ../scss/main.scss */
 #footer {
   text-align: center;
   font-size: 10px;
