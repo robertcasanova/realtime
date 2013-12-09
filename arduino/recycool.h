@@ -30,7 +30,7 @@ class Recycool
 		int getWeight();
 		int getDistance();
 		int getStatus();
-		int sendData()
+		int sendData();
 
 	private:
 		void _httpRequest(IPAddress server, char* route);
