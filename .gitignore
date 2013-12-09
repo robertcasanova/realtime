@@ -16,3 +16,4 @@ config/index.js
 .DS_Store
 public/.sass-cache/*
 /nbproject/private/
+/nbproject
