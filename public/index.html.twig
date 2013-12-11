@@ -9,26 +9,43 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
-    
+    <nav>
+        <a  href="#recycool">Recycool</a>
+        <a  href="#power-off">Power off</a>
+        <a  href="#power-on">Power on</a>
+        <a  href="#open">Open</a>
+    </nav>
     <div id="wrapper">
-          <section id="power" class="active">
-            <div class="active">
+        <section id="power-off" class="overlay active">
+            <div>
                 <img class="pulse" src="img/power.png" alt="">
                 <h1>
-                  <span class="animated slideInLeft">Turn power on</span>
+                  <span class="animated">Turn power on</span>
                 </h1>
             </div>
+        </section>
+        <section id="power-on" class="overlay">
             <div>
                 <img src="img/logo.png" alt="">
                 <h1>
-                  <span class="animated slideInLeft">Recycool is <strong>Active</strong></span>
+                  <span class="animated">Recycool is <strong>Active</strong></span>
                 </h1>
             </div>
-            
-          </section>
+        </section>
+        <section id="open" class="overlay">
+            <div>
+                <img src="img/open.png" alt="">
+                <h1>
+                    <span>Box Open</span>
+                </h1>
+            </div>
+        </section>
+          
 
 
-          <section id="recycool" >
+
+
+        <section id="recycool" class="overlay">
             <input data-width="150"
 data-fgColor="#ffec03"
 data-skin="tron"

@@ -91,7 +91,15 @@ jQuery(function($){
 	};
 
 	
-	
+	$('nav a').on('click', function(e) {
+        var id = $(e.currentTarget).attr('href').slice(1);
+        $('section')
+            .removeClass('active')
+            .filter("#"+id).addClass('active');
+
+    });
+
+
 
 	RECYCOOL.animateDial('.dial',volume);
 
