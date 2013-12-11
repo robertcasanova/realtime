@@ -1,3 +1,7 @@
+@import "compass";
+
+
+
 $irish_green: #60bf7a;
 
 
@@ -27,27 +31,31 @@ h1 {
 
 
 
+
 #wrapper{
 	text-align: center;
 	position: relative;
 	height: 100%;
 
-	#recycool{
-		height: 600px;
-		text-align: center;
-		position: relative;
-		div{
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			margin: auto;
+	section {
+		@include transition(opacity 1000ms);
+		@include opacity(0);
+		&.active {
+			@include opacity(1);
 		}
-		input{
-			display: none;
-		}	
+	}
+
+
+	#recycool{
+		background-color: #000;
+		height: 600px;
+		width: 600px;
+		top:50%;
+		left:50%;
+		margin-top: -300px;
+		margin-left: -300px;
+		text-align: center;
+		position: absolute;	
 	}
 	#power {
 		display: block;
@@ -57,6 +65,7 @@ h1 {
 		width: 100%;
 		margin: 0 auto;
 		margin-top: -73px;
+		
 		img {
 			display: block;
 			margin: 0 auto;

@@ -8117,7 +8117,7 @@ th.hide-for-touch {
   -webkit-animation: pulse 1s ease-in-out 0 infinite alternate;
 }
 
-/* line 4, ../scss/main.scss */
+/* line 8, ../scss/main.scss */
 html, body {
   margin: 0;
   background-color: #60bf7a;
@@ -8128,7 +8128,7 @@ html, body {
   width: 100%;
 }
 
-/* line 14, ../scss/main.scss */
+/* line 18, ../scss/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
@@ -8136,40 +8136,46 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 21, ../scss/main.scss */
+/* line 25, ../scss/main.scss */
 h1 {
   font-size: 35px;
   line-height: 35px;
   margin: 20px 0;
 }
 
-/* line 30, ../scss/main.scss */
+/* line 35, ../scss/main.scss */
 #wrapper {
   text-align: center;
   position: relative;
   height: 100%;
 }
-/* line 35, ../scss/main.scss */
+/* line 40, ../scss/main.scss */
+#wrapper section {
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -o-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 43, ../scss/main.scss */
+#wrapper section.active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 49, ../scss/main.scss */
 #wrapper #recycool {
+  background-color: #000;
   height: 600px;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -300px;
   text-align: center;
-  position: relative;
-}
-/* line 39, ../scss/main.scss */
-#wrapper #recycool div {
-  display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
 }
-/* line 48, ../scss/main.scss */
-#wrapper #recycool input {
-  display: none;
-}
-/* line 52, ../scss/main.scss */
+/* line 60, ../scss/main.scss */
 #wrapper #power {
   display: block;
   position: absolute;
@@ -8179,17 +8185,17 @@ h1 {
   margin: 0 auto;
   margin-top: -73px;
 }
-/* line 60, ../scss/main.scss */
+/* line 69, ../scss/main.scss */
 #wrapper #power img {
   display: block;
   margin: 0 auto;
 }
-/* line 64, ../scss/main.scss */
+/* line 73, ../scss/main.scss */
 #wrapper #power h1 strong {
   display: block;
   font-weight: 300;
 }
-/* line 68, ../scss/main.scss */
+/* line 77, ../scss/main.scss */
 #wrapper #power span {
   display: block;
   width: 100%;
@@ -8197,28 +8203,28 @@ h1 {
   top: 100px;
   left: 0;
 }
-/* line 75, ../scss/main.scss */
+/* line 84, ../scss/main.scss */
 #wrapper #power > div {
   display: none;
 }
-/* line 77, ../scss/main.scss */
+/* line 86, ../scss/main.scss */
 #wrapper #power > div.active {
   display: block;
 }
-/* line 82, ../scss/main.scss */
+/* line 91, ../scss/main.scss */
 #wrapper #power div + div img {
   margin-top: -20px;
 }
-/* line 87, ../scss/main.scss */
+/* line 96, ../scss/main.scss */
 #wrapper #power:hover > div {
   display: block;
 }
-/* line 89, ../scss/main.scss */
+/* line 98, ../scss/main.scss */
 #wrapper #power:hover > div.active {
   display: none;
 }
 
-/* line 98, ../scss/main.scss */
+/* line 107, ../scss/main.scss */
 #footer {
   text-align: center;
   font-size: 10px;
