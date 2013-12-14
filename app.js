@@ -9,9 +9,7 @@ var express = require('express'),
 var app = express();
 var socket_glob;
 
-var global_status = "POWER OFF",
-    global_weight = "0",
-    global_volume = "0";
+var prev_status = "power_off";
 
 // Configuration
 app.configure(function(){
@@ -61,7 +59,7 @@ io.configure(function() {
 // Routes
 
 app.get('/', function(req,res) {
-    res.render('index.html.twig', { server: config.server_IP, status: global_status, weight: global_weight, volume: global_volume });
+    res.render('index.html.twig', { server: config.server_IP});
 });
 
 app.get('/arduino', function(req, res) {
@@ -69,30 +67,27 @@ app.get('/arduino', function(req, res) {
     //quanto è pieno il bidone, se è pieno o vuoto
     //peso
 
-    if( req.get('user-agent').match(/arduino/))  {
-        var status = req.query.status || global_status,
-        weight = req.query.weight || global_weight,
-        volume = req.query.volume || global_volume;
+    //if( req.get('user-agent').match(/arduino/))  {
+        var status = req.query.status || 'power_off',
+            load = req.query.load || 0,
+            weight = req.query.weight || 0,
+            volume = req.query.volume || 0;
 
-        console.log('sending data to frontend client...');
 
-        if(status != global_status) {
-            global_status = status;
-            io.sockets.in(req.sessionID).emit('recycool:status', { status: status });
+        if(status != prev_status || status == "update") {
+            prev_status = status;
+            io.sockets.in(req.sessionID).emit('recycool:update', { status: status, load: load, weight: weight, volume: volume });
+            console.log('Data sent to clients');
+        } else {
+            console.log("No status changes");
         }
-        if(weight != global_weight) {
-            global_weight = weight;
-            io.sockets.in(req.sessionID).emit('recycool:weight', { weight: weight });
-        }
-        if(volume != global_volume) {
-            global_volume = volume;
-            io.sockets.in(req.sessionID).emit('recycool:volume', { volume: volume });
-        }
+
+        prev_status = status;
 
         res.send(200);
-    } else {
-        res.redirect('/');
-    }
+   // } else {
+     //   res.redirect('/');
+   // }
 
 
     
