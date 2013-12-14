@@ -7,9 +7,10 @@ html, body {
   color: #fff;
   height: 100%;
   width: 100%;
+  margin-bottom: 100px;
 }
 
-/* line 18, ../scss/main.scss */
+/* line 19, ../scss/main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
@@ -17,14 +18,14 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 25, ../scss/main.scss */
+/* line 26, ../scss/main.scss */
 h1 {
   font-size: 35px;
   line-height: 35px;
   margin: 20px 0;
 }
 
-/* line 32, ../scss/main.scss */
+/* line 33, ../scss/main.scss */
 nav {
   position: absolute;
   top: 0;
@@ -32,13 +33,13 @@ nav {
   z-index: 10;
 }
 
-/* line 49, ../scss/main.scss */
+/* line 50, ../scss/main.scss */
 #wrapper {
   text-align: center;
   position: relative;
   height: 100%;
 }
-/* line 54, ../scss/main.scss */
+/* line 55, ../scss/main.scss */
 #wrapper section {
   position: absolute;
   top: 0;
@@ -52,17 +53,17 @@ nav {
   -o-transition: opacity 1000ms;
   transition: opacity 1000ms;
 }
-/* line 63, ../scss/main.scss */
+/* line 64, ../scss/main.scss */
 #wrapper section.overlay {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 66, ../scss/main.scss */
+/* line 67, ../scss/main.scss */
 #wrapper section.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 69, ../scss/main.scss */
+/* line 70, ../scss/main.scss */
 #wrapper section > div {
   position: absolute;
   top: 0;
@@ -71,31 +72,173 @@ nav {
   bottom: 0;
   margin: auto;
 }
-/* line 81, ../scss/main.scss */
-#wrapper #recycool {
-  z-index: 1;
-  text-align: center;
-}
-/* line 85, ../scss/main.scss */
+/* line 83, ../scss/main.scss */
 #wrapper #open {
   background: #000;
   color: #000;
 }
-/* line 88, ../scss/main.scss */
+/* line 86, ../scss/main.scss */
 #wrapper #open > div {
   height: 315px;
 }
-/* line 93, ../scss/main.scss */
+/* line 91, ../scss/main.scss */
 #wrapper #power-on > div {
   height: 175px;
 }
-/* line 98, ../scss/main.scss */
+/* line 96, ../scss/main.scss */
 #wrapper #power-off > div {
   height: 150px;
 }
 
-/* line 106, ../scss/main.scss */
+/* line 104, ../scss/main.scss */
+#recycool {
+  z-index: 1;
+  text-align: center;
+}
+/* line 109, ../scss/main.scss */
+#recycool > div {
+  width: 750px;
+  height: 698px;
+}
+/* line 114, ../scss/main.scss */
+#recycool .logo {
+  display: block;
+  margin: 100px auto 20px;
+}
+/* line 117, ../scss/main.scss */
+#recycool .logo img {
+  display: block;
+  margin: 20px auto;
+}
+/* line 122, ../scss/main.scss */
+#recycool .bar-meter {
+  height: 230px;
+  width: 190px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  margin-right: 10px;
+  border-right: 2px solid #fff;
+}
+/* line 131, ../scss/main.scss */
+#recycool .bar-meter span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  margin: 5px 120px;
+}
+/* line 138, ../scss/main.scss */
+#recycool .bar-meter span + span {
+  top: auto;
+  bottom: 0;
+}
+/* line 142, ../scss/main.scss */
+#recycool .bar-meter ul, #recycool .bar-meter li {
+  list-style: none;
+  padding: 0;
+  margin: 10px auto;
+}
+/* line 147, ../scss/main.scss */
+#recycool .bar-meter ul {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+}
+/* line 152, ../scss/main.scss */
+#recycool .bar-meter li {
+  display: none;
+  margin: 4px auto;
+  width: 120px;
+  height: 15px;
+  background-color: #FFF;
+}
+/* line 160, ../scss/main.scss */
+#recycool .value {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -25px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 200;
+}
+/* line 169, ../scss/main.scss */
+#recycool .value strong {
+  font-weight: 400;
+}
+/* line 173, ../scss/main.scss */
+#recycool h2 {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  margin-top: -45px;
+}
+/* line 181, ../scss/main.scss */
+#recycool .weight {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin: 0 30px;
+  width: 266px;
+  height: 266px;
+}
+/* line 191, ../scss/main.scss */
+#recycool .volume {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+}
+/* line 200, ../scss/main.scss */
+#recycool .volume .value {
+  font-size: 27px;
+  margin-top: -15px;
+}
+/* line 204, ../scss/main.scss */
+#recycool .volume sup {
+  font-size: 20px;
+}
+/* line 207, ../scss/main.scss */
+#recycool .volume h2 {
+  font-size: 16px;
+  margin-top: -30px;
+}
+
+/* line 214, ../scss/main.scss */
 #footer {
   text-align: center;
   font-size: 10px;
+}
+
+@media screen and (max-width: 750px) {
+  /* line 221, ../scss/main.scss */
+  #recycool > div {
+    width: auto;
+    height: auto;
+  }
+  /* line 226, ../scss/main.scss */
+  #recycool .logo img + img {
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 238, ../scss/main.scss */
+  #recycool .bar-meter {
+    width: 120px;
+  }
+  /* line 241, ../scss/main.scss */
+  #recycool .weight, #recycool .volume, #recycool .bar-meter {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
