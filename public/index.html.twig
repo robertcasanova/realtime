@@ -9,12 +9,6 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
-    <nav>
-        <a  href="#recycool">Recycool</a>
-        <a  href="#power-off">Power off</a>
-        <a  href="#power-on">Power on</a>
-        <a  href="#open">Open</a>
-    </nav>
     <div id="wrapper">
         <section id="power-off" class="overlay active">
             <div>
@@ -45,13 +39,44 @@
 
 
 
-        <section id="recycool" class="overlay">
-            <input data-width="150"
-data-fgColor="#ffec03"
-data-skin="tron"
-data-thickness=".1"
-data-displayPrevious=true type="text" value="0" class="dial">
-          </section>
+        <section id="recycool" class="overlay ">
+            <div>
+                <div class="logo">
+                    <img src="img/logo-text.png" alt="">
+                    <img src="img/separator.png" alt="">
+                </div>
+                <div class="bar-meter">
+                    <span>
+                        <img src="img/fill-circle.png" alt="">
+                    </span>
+                    <span>
+                        <img src="img/empty-circle.png" alt="">
+                    </span>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    
+                </div>
+                <div class="weight">
+                    <input data-skin="tron" data-width="266" data-height="266" type="text" class="dial" value="0">
+                    <h2>Weight</h2>
+                    <div class="value"><span>0</span><strong>g</strong></div>
+                </div>
+                <div class="volume">
+                    <input data-skin="tron" data-width="200" data-height="200" type="text" value="0" class="dial">
+                    <h2>Volume</h2>
+                    <div class="value"><span>0</span><strong>cm<sup>3</sup></strong></div>
+                </div>
+            </div>
+        </section>
         </div>
     </div>
 
