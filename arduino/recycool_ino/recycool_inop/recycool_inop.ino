@@ -1,22 +1,36 @@
 
 #include <SPI.h>
+#include <Dhcp.h>
 #include <Ethernet.h>
+#include <util.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
+// Enter a MAC address for your controller below.
+// Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = {  0x90, 0xA2, 0xDA, 0x00, 0x9E, 0x3E };
-char server[] = "192.168.178.34";    // name address for Google (using DNS)
-IPAddress ip(192,168,178,200);
-int i = 0;
-static uint32_t timer;
 
+IPAddress ip(192,168,0,2);
+char server[] = "192.168.0.1";    
 EthernetClient client;
 
+boolean lastConnected = false;                 // state of the connection last time through the main loop
+unsigned long lastConnectionTime = 0;          // last time you connected to the server, in milliseconds
+const unsigned long postingInterval = 2 * 1000;  // delay between updates, in milliseconds
+
+unsigned long lastSensorValues = 0;                 // state of the connection last time through the main loop
+const unsigned long sensorInterval = 2 * 1000;  // delay between sensor values, in milliseconds
+
 LiquidCrystal_I2C lcd(0x20, 4, 5, 6, 0, 1, 2, 3, 7, NEGATIVE);  // Set the LCD I2C address
+  
+String tmp = "";
+String hum = "";
+
+//Sensors
 
 //top
 const int top = 2;
-int top_status = 0; // closed
+int top_switch = 0; // closed
 
 //volume
 
@@ -30,10 +44,12 @@ float weight_input = 0;
 float weight_val = 0;
 
 
-void setup() 
-{
-  Serial.begin(9600);  
+void setup(void) {
 
+   // start serial port
+  Serial.begin(9600);  
+  delay(3000);
+  
   lcd.begin(16,2);
 
   lcd.print("Recycool");
@@ -44,24 +60,42 @@ void setup()
   digitalWrite(top, HIGH);    // Activate internal pullup resistor
   
   pinMode(trigger, OUTPUT);
-  pinMode(echo, INPUT);
+  pinMode(echo, INPUT);  
   
-  // start the Ethernet connection and the server:
-  Ethernet.begin(mac, ip);
-  if (client.connect(server, 80)) {
-    Serial.println('Ok, creazione client effettuata');
-  }  
 }
 
+void httpRequest() {
 
-void loop() 
-{
-  if (millis() > timer) { 
-    
-    //Status
-    top_status = digitalRead(top);
+  Ethernet.begin(mac, ip);
+  delay(1000);
+
+  if (client.connect(server, 80)) {
+    Serial.println("connecting...");
+    // send the HTTP PUT request:
+    client.println("GET /arduino HTTP/1.1");
+    client.println("Host: 192.168.0.1");
+    client.println("Connection: close");
+    client.println("User-Agent: arduino");
+    client.println();
+
+  }
+  else {
+    // if you couldn't make a connection:
+    Serial.println("connection failed");
+    Serial.println("disconnecting.");
+    client.stop();
+  }
+
+  // note the time that the connection was made:
+  lastConnectionTime = millis();
+
+}
+
+void getSensorValues(void) {
+  
+    top_switch = digitalRead(top);
     lcd.setCursor(0,1);
-    if(top_status == LOW) { // top closed
+    if(top_switch == LOW) { // top closed
       Serial.println("closed");
       lcd.print("closed");
     } else {
@@ -76,8 +110,6 @@ void loop()
     digitalWrite( trigger, LOW);
     
     long duration = pulseIn( echo, HIGH );
-    
-    //Distance
     long distance = 0.034 * duration / 2;
     
     if( distance < 0 || distance > 75 ){
@@ -85,18 +117,16 @@ void loop()
     }
     
     weight_input = analogRead(weight);
-    
-    //Weight
     weight_val = mapfloat(weight_input, 17, 27, 0.1, 0.2);
     
-    httpRequest(distance); 
-    if (client.available()) {
-      char c = client.read();
-      Serial.print(c);
-    }    
-     
-    timer = millis() + 5000;
-  }
+    
+    lcd.setCursor(10,1);
+    lcd.print("    ");
+    lcd.setCursor(10,1);
+    lcd.print(distance);
+    Serial.println(distance);
+  
+    lastSensorValues = millis(); 
 }
 
 float mapfloat(float x, float in_min, float in_max, float out_min, float out_max)
@@ -104,27 +134,40 @@ float mapfloat(float x, float in_min, float in_max, float out_min, float out_max
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void httpRequest(long distance)
-{
+void loop(void) { 
   
-      String distance_str = String(distance, DEC);
-      String test = String(i);
-     
-      String baseurl = "GET /arduino?t=";
-      String endurl = " HTTP/1.1";
+
+   if (client.available()) {
+       char c = client.read();
+       Serial.print(c);
+   }
+
+   // if there's no net connection, but there was one last time
+   // through the loop, then stop the client:
+   if (!client.connected() && lastConnected) {
+       Serial.println();
+       Serial.println("disconnecting.");
+       client.stop();
+   }
+
   
-      delay(1000);
-      Serial.println(baseurl + test + endurl);
-      // Make a HTTP request:
-      //client.println(baseurl + test + endurl);
-      client.println("GET /arduino?status=power-on&load=50&volume=30&weight=90 HTTP/1.1");
-      client.println("Host: 192.168.178.34");
-      client.println("Connection: close");
-      client.println();
-      
-      i++;
-  
+   if(millis() - lastSensorValues > sensorInterval) {      
+        getSensorValues();
+   }
+   
+
+   // if you're not connected, and ten seconds have passed since
+   // your last connection, then connect again and send data:
+   if(!client.connected() && (millis() - lastConnectionTime > postingInterval)) {
+       httpRequest();
+   }
+   
+   // store the state of the connection for next time through
+   // the loop:
+   lastConnected = client.connected();
 }
 
 
 
+
+ 
