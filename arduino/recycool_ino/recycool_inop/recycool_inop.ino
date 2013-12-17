@@ -84,7 +84,8 @@ void httpRequest() {
   if (client.connect(server, 80)) {
     Serial.println("connecting...");
     // send the HTTP PUT request:
-    client.println("GET /arduino?status="+ rStatus + "&load=" + distance + "&volume=" + ( distance * 625 / 1000 ) + "&weight="+ (int) (weight_val * 1000) +" HTTP/1.1");
+    int normalized_distance = map((70-distance), 0,70,0,100);
+    client.println("GET /arduino?status="+ rStatus + "&load=" + normalized_distance + "&volume=" + ( (70-distance) * 625 / 1000 ) + "&weight="+ (int) (weight_val * 1000) +" HTTP/1.1");
     client.println("Host: 192.168.0.1");
     client.println("Connection: close");
     client.println("User-Agent: arduino");
