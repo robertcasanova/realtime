@@ -10,16 +10,16 @@
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = {  0x90, 0xA2, 0xDA, 0x00, 0x9E, 0x3E };
 
-IPAddress ip(192,168,0,2);
-char server[] = "192.168.0.1";    
+IPAddress ip(10,10,9,53);
+char server[] = "10.10.9.73";    
 EthernetClient client;
 
 boolean lastConnected = false;                 // state of the connection last time through the main loop
 unsigned long lastConnectionTime = 0;          // last time you connected to the server, in milliseconds
-const unsigned long postingInterval = 2 * 1000;  // delay between updates, in milliseconds
+const unsigned long postingInterval = 1 * 500;  // delay between updates, in milliseconds
 
 unsigned long lastSensorValues = 0;                 // state of the connection last time through the main loop
-const unsigned long sensorInterval = 2 * 1000;  // delay between sensor values, in milliseconds
+const unsigned long sensorInterval = 1 * 500;  // delay between sensor values, in milliseconds
 
 LiquidCrystal_I2C lcd(0x20, 4, 5, 6, 0, 1, 2, 3, 7, NEGATIVE);  // Set the LCD I2C address
   
@@ -33,16 +33,19 @@ const int top = 2;
 int top_switch = 0; // closed
 
 //volume
-
 const int trigger = 7;
 const int echo = 8;
 
 //weight
-
 const int weight = A0;
 float weight_input = 0;
 float weight_val = 0;
 
+//distance
+long distance = 0;
+
+//recycool status
+String rStatus = "power_off";
 
 void setup(void) {
 
@@ -61,10 +64,19 @@ void setup(void) {
   
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);  
+
+  //status acceso
+  rStatus = "power_on";
   
+  httpRequest();
+  
+  delay(3000);
 }
 
 void httpRequest() {
+
+  //load, volume, weight
+
 
   Ethernet.begin(mac, ip);
   delay(1000);
@@ -72,7 +84,7 @@ void httpRequest() {
   if (client.connect(server, 80)) {
     Serial.println("connecting...");
     // send the HTTP PUT request:
-    client.println("GET /arduino HTTP/1.1");
+    client.println("GET /arduino?status="+ rStatus + "&load=" + distance + "&volume=" + ( distance * 625 / 1000 ) + "&weight="+ (int) (weight_val * 1000) +" HTTP/1.1");
     client.println("Host: 192.168.0.1");
     client.println("Connection: close");
     client.println("User-Agent: arduino");
@@ -110,10 +122,13 @@ void getSensorValues(void) {
     digitalWrite( trigger, LOW);
     
     long duration = pulseIn( echo, HIGH );
-    long distance = 0.034 * duration / 2;
     
-    if( distance < 0 || distance > 75 ){
-     distance = 75;
+    long temp_dist = 0.034 * duration / 2;
+    
+    distance = temp_dist;
+    
+    if( distance < 0 || distance > 70 ){
+     distance = 70;
     }
     
     weight_input = analogRead(weight);
@@ -123,8 +138,8 @@ void getSensorValues(void) {
     lcd.setCursor(10,1);
     lcd.print("    ");
     lcd.setCursor(10,1);
-    lcd.print(distance);
-    Serial.println(distance);
+    lcd.print(weight_val);
+    Serial.println(weight_val);
   
     lastSensorValues = millis(); 
 }
@@ -136,6 +151,11 @@ float mapfloat(float x, float in_min, float in_max, float out_min, float out_max
 
 void loop(void) { 
   
+    if(top_switch == LOW) {
+      rStatus = "update";
+    } else {
+      rStatus = "top_open";
+    }
 
    if (client.available()) {
        char c = client.read();
