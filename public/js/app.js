@@ -4,7 +4,7 @@ $(document).foundation();
 
 var RECYCOOL = window.RECYCOOL || {};
 
-var socket = io.connect("http://127.0.0.1");
+var socket = io.connect("http://10.10.10.64");
 socket.on('recycool:update', function (data) {
     var status = data.status;
 
